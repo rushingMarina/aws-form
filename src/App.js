@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Simpleform from './Simpleform'
 import logo from './logo.svg';
 import './App.css';
+import SendEmail from './Sendemail'
 
 
 
@@ -25,17 +26,18 @@ class App extends Component {
   }
 
   callbackFunction = (childData) => {
-      this.setState({user: childData})
-}
+    let email = childData.email;
+    let subject = 'Thank you for your message.';
+    let message = 'Here is your message: ' + childData.message;
+    SendEmail(email, subject, message);
+      this.setState({user: childData});
+  }
 
   render() {
     return (
       <div className="App">
 
         <Simpleform parentCallback = {this.callbackFunction}/>
-        <p> {this.state.user.name} </p>
-        <p> {this.state.user.email} </p>
-        <p> {this.state.user.message} </p>
       </div>
     );
   }
