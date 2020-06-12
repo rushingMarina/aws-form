@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Simpleform from './Simpleform'
 import logo from './logo.svg';
 import './App.css';
-import SendEmail from './Sendemail'
+import SendEmail from './Sendemail';
+import SaveMessage from './Savemessage'
 
 
 
@@ -26,10 +27,13 @@ class App extends Component {
   }
 
   callbackFunction = (childData) => {
+    let name = childData.name;
+    let messageToSave = childData.message;
     let email = childData.email;
-    let subject = 'Thank you for your message.';
+    let subject = childData.name + ', thank you for your message.';
     let message = 'Here is your message: ' + childData.message;
     SendEmail(email, subject, message);
+    SaveMessage(name, email, messageToSave);
       this.setState({user: childData});
   }
 
