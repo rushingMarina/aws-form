@@ -11,6 +11,5 @@ export default function saveMessage(name, email, message) {
   .then(response => response.json())
   .then((response) => {
     console.log(response);
-            document.getElementById("messages").innerHTML += "<p>"+message+"</p>"; // Add new message to message list
   });
 }

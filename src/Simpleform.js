@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import "./App.css";
 
 export default class SimpleFormExample extends React.Component {
     state = {
@@ -35,7 +36,7 @@ export default class SimpleFormExample extends React.Component {
                 ref="form"
                 onSubmit={this.handleSubmit}
             >
-                <h2>Sample form</h2>
+                <h2 className="heading">Sample form</h2>
                 <TextValidator
                     label="Name"
                     onChange={this.handleChange}

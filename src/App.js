@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import Simpleform from './Simpleform'
-import logo from './logo.svg';
 import './App.css';
 import SendEmail from './Sendemail';
-import SaveMessage from './Savemessage'
+import SaveMessage from './Savemessage';
+import 'fontsource-roboto';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
-
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+    maxWidth: 500,
+  },
+});
 
 const initialState = {
   user: {
@@ -30,7 +34,7 @@ class App extends Component {
     let name = childData.name;
     let messageToSave = childData.message;
     let email = childData.email;
-    let subject = childData.name + ', thank you for your message.';
+    let subject = childData.name;
     let message = 'Here is your message: ' + childData.message;
     SendEmail(email, subject, message);
     SaveMessage(name, email, messageToSave);
@@ -40,8 +44,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
         <Simpleform parentCallback = {this.callbackFunction}/>
+        <div className="note-box">
+        <Typography className="note" variant="body2" gutterBottom>
+           Note: Please check your spam folders if you do not see an email from 333marina2007@gmail.com in your inbox.
+        </Typography>
+        </div>
       </div>
     );
   }
